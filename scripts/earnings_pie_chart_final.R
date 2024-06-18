@@ -23,5 +23,5 @@ get_earnings_pie_chart <- function(df, yr) {
     ggtitle("2020 Top 15 Earnings by Game") +
     theme_minimal()
 
-  return(earnings_plot, tooltip = "text")
+  return(earnings_plot)
 }

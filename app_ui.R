@@ -9,7 +9,7 @@ library("stringr")
 # Overview Page
 overview_page <- tabPanel(
     "Overview",
-    HTML('<center><img src = "https://www.futuresplatform.com/sites/default/files/styles/article_hero_image/public/2019-02/esports.jpg?itok=TK6lpK_V"></center>'),
+    HTML('<center><img src = "https://worldfootballsummit.com/wp-content/uploads/2022/08/esports.jpeg"></center>'),
     tags$h2(id = "centered", "Overview of Our Project"),
     tags$em(id = "centered_block",
             "Kyle Riner, Roger Tram, Danhiel Vu, Sydney Wood"),
