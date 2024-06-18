@@ -1,0 +1,88 @@
+---
+title: "eSports Earnings Data"
+author: "Danhiel Vu, Sydney Wood, Roger Tram, Kyle Riner"
+date: "11/29/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, include=FALSE, message=FALSE, warning=FALSE}
+library("knitr")
+source("scripts/table.R")
+source("scripts/summary.R")
+source("scripts/dota_2_chart.R")
+source("scripts/earnings_pie_chart.R")
+#source("scripts/top_games_chart.R")
+
+esports_df <- read.csv("data/HistoricalEsportData.csv",
+                       stringsAsFactors = FALSE)
+esports_summary <- get_summary_info(esports_df)
+```
+
+## Introduction to Esports Earnings Data
+
+The topic of competitive gaming, eSports, has been a growing and controversial
+discussion for many audiences including investors, students, teachers and
+many more. This data report revolves around the integrative evolution and
+career viability of the topic. We explore on the expansion of the future
+of competitve gaming by researching the growth and pertinent trends of
+earnings from eSports. This is an important topic for many young adults to
+explore as an optional viable career path for their future.
+
+## Summary Information of eSports Earnings
+According to this [eSports Earnings 1998 - 2020](https://www.kaggle.com/rankirsh/esports-earnings) data set,
+the average earnings among all eSports events from 1998 to 2020 is `r esports_summary$avg_earnings`
+with the total earnings being `r esports_summary$total_earnings` and the highest
+earnings for a single event being `r esports_summary$max_earnings`.
+The most number of players for an eSports event is `r esports_summary$max_players` players.
+The most number of tournaments for a single eSports event is `r esports_summary$max_tournaments` tournaments.
+The number of players and tournaments are in close relation to eSports earnings as
+it shows popularity which in turns generate revenue.
+
+
+## Table of eSports Earnings from the Years 1998 to 2020
+Summarized from this [eSports Earnings 1998 - 2020](https://www.kaggle.com/rankirsh/esports-earnings) data set,
+this table shows clearly how eSports has grown in popularity over the years as
+every subsequent year has an increase in earnings, players, and tournaments.
+Higher earnings means more players and more players means more tournaments
+which leads to higher earnings creating a snowball effect that has only been
+slightly halted in 2020 likely due to COVID-19.
+
+- As the year increased, the total earnings, total player, and total tournaments
+increased drastically.
+- In 2020, the total earnings and players decreased for the first
+time since 1998. The total number of tournaments also took a significant dip being
+the lowest since 2013. This is highly likely due to the COVID-19 pandemic.
+- From 2016 to 2019, the number of tournaments stayed stagnant of around 4800
+total tournaments. Before this stagnancy, the number of tournaments was
+increasing at a rapid pace per year.
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+kable(get_table_info(esports_df))
+```
+
+## Charts of eSports Information
+
+The next three charts uses this
+[eSports Earnings 1998 - 2020](https://www.kaggle.com/rankirsh/esports-earnings) data set.
+
+```{r top, echo=FALSE, message=FALSE, warning=FALSE}
+#plot(get_top_games_chart(esports_df))
+```
+
+A bar plot was used to keep track of the number of tournaments being held for all games throughout the years. This plot does well to show us the slow rise of support for eSports tournaments that takes place in the early 2000s until it spikes in the mid 2010s and eventually drops in the 2020s due to COVID-19. The dropoff in 2020 is critical in comparing the viability of a career in eSports in 2020 compared to previous years.
+
+```{r dota, echo=FALSE, message=FALSE, warning=FALSE}
+plot(get_dota_2_chart(esports_df))
+```
+
+A scatter plot was chosen so that we could see the trend of fluctuating earnings each year. The visualisation aims to track Dota 2 specifically as it has the highest earnings compared to all other games throughout the years and it shows how even it shares the downward spike in 2020 as all other games have had due to COVID-19.
+
+```{r earnings, echo=FALSE, message=FALSE, warning=FALSE}
+plot(get_earnings_pie_chart(esports_df))
+```
+
+The pie chart graphic was used to show distribution of earnings between games. It has been filtered down to the top 15 games, which is enough to show how a lot of eSports earnings is skewed into a few top games like Counter-Strike GLobal Offensive and Dota 2. Along with this, it shows specifically what game in 2020 has the highest yearly earnings.

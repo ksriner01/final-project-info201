@@ -1,0 +1,27 @@
+#centered {
+  text-align: center;
+}
+
+#centered_block {
+  display: block;
+  text-align: center;
+}
+
+#intro {
+  text-align: center;
+  font-size: large;
+}
+
+#inline {
+  display: inline-block;
+}
+
+#bluetext {
+  color: navy;
+}
+
+#pagetitle {
+  text-align: center;
+  background-color: whitesmoke;
+  padding: 10px;
+}
